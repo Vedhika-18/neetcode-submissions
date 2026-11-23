@@ -1,0 +1,26 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[][] a = new int[nums.length][2];
+        for(int i=0;i<nums.length;i++){
+            a[i][0]=nums[i];
+            a[i][1]=i;
+        }
+        Arrays.sort(a,Comparator.comparingInt(b->b[0]));
+        int l=0;
+        int j=nums.length-1;
+        while(l<j){
+            int cur = a[l][0]+a[j][0];
+            if(cur==target){
+               return new int[]{Math.min(a[l][1],a[j][1]),
+               Math.max(a[l][1],a[j][1])};
+            }
+            else if(cur<target){
+                l++;
+            }
+            else{
+                j--;
+            }
+        }
+        return new int[0];
+ }
+}
